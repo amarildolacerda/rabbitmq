@@ -267,7 +267,17 @@ VOLUME $RABBITMQ_DATA_DIR
 ENV LANG=C.UTF-8 LANGUAGE=C.UTF-8 LC_ALL=C.UTF-8
 
 COPY docker-entrypoint.sh /usr/local/bin/
+
+
+
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 EXPOSE 4369 5671 5672 15691 15692 25672
+
+
+RUN apt-get update
+RUN apt-get install --yes net-tools 
+
+
+
 CMD ["rabbitmq-server"]
